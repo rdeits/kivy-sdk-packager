@@ -78,6 +78,7 @@ def bootstrap(source_app, appname, confirm):
     print('copying {} to {}'.format(source_app, appname))
     sh.mkdir(appname)
     sh.cp('-a', join(source_app, "Contents"), join(appname, "Contents"))
+    sh.cp("../../../../../Info.plist", join(appname, "Contents"))
 
 
 def insert_app(path_to_app, appname, blacklist=None, whitelist=None):
