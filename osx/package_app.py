@@ -34,7 +34,7 @@ Options:
                                     lot of unneeded files. [default: True].
     --deps=<deplist>                Dependencies list.
     --gardendeps=<deplist>          Garden Dependencies list.
-    --with-gstreamer=<yes|no>       Include GStreamer framework. [default: yes]
+    --with-gstreamer=<yes|no>       Include GStreamer framework. [default: no]
     --whitelist=<path/to/whitelist> file to use as include list when copying app
     --blacklist=<path/to/blacklist> file to use as exclude list when copying app
 '''
@@ -89,7 +89,7 @@ def insert_app(path_to_app, appname, blacklist=None, whitelist=None):
         params.append('--exclude-from={}'.format(blacklist))
     sh.rsync(*params)
 
-def cleanup(appname, strip, gstreamer=True):
+def cleanup(appname, strip, gstreamer='no'):
     if not strip:
         return
     print("stripping app")
@@ -209,7 +209,7 @@ def main(arguments):
         appname = appname + '.app'
     icon = arguments.get('--icon')
     strip = arguments.get('--strip', True)
-    gstreamer = arguments.get('--with-gstreamer', True)
+    gstreamer = arguments.get('--with-gstreamer', 'no')
     deps = arguments.get('--deps', [])
     gardendeps = arguments.get('--gardendeps', [])
     blacklist = arguments.get('--blacklist')
