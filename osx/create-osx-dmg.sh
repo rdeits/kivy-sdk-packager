@@ -24,8 +24,8 @@ mkdir "${STAGING_DIR}"
 cp -a $1 "${STAGING_DIR}"
 ln -s /Applications "${STAGING_DIR}/Applications"
 mkdir "${STAGING_DIR}/.background"
-cp "data/${DMG_BACKGROUND_IMG}" "${STAGING_DIR}/.background/"
-cp "data/${SYMLINKS_SCRIPT}" "${STAGING_DIR}/${SYMLINKS_SCRIPT}"
+# cp "data/${DMG_BACKGROUND_IMG}" "${STAGING_DIR}/.background/"
+# cp "data/${SYMLINKS_SCRIPT}" "${STAGING_DIR}/${SYMLINKS_SCRIPT}"
 
 # create the initial dmg
 echo "-- Create volume"
@@ -60,7 +60,6 @@ echo '
            set viewOptions to the icon view options of container window
            set arrangement of viewOptions to not arranged
            set icon size of viewOptions to 128
-           set background picture of viewOptions to file ".background:'${DMG_BACKGROUND_IMG}'"
            set position of item "'${APP_NAME}'.app" of container window to {160, 265}
            set position of item "Applications" of container window to {384, 265}
            close
